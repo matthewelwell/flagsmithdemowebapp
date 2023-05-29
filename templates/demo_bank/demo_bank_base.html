@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Centered Container</title>
+    {% include "includes/head.html" %}
+    <style>
+        body, html {
+            height: 100%;
+        }
+
+        .center-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .container {
+            background-color: #6633ff;
+            color: white;
+            height: 300px;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+        }
+
+        {% block extra-style %}{% endblock %}
+    </style>
+</head>
+<body>
+    <div class="center-container">
+        <div class="container">
+            {% block bank-content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

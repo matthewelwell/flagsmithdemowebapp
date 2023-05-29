@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %} Webhooks {% endblock %}
+{% block pagetitle %} Webhooks {% endblock %}
+
+{% block content %}
+
+    <div>
+        <div class="identities-trigger">
+            <p>Trigger an identity request:</p>
+            <form action="{% url 'webhooks-identities-trigger' %}" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Identify">
+            </form>
+        </div>
+        <hr>
+        <div class="webhooks-data">
+            <ul>
+                {% if last_incoming_webhook %}
+                    <li>
+                        <strong>{{ last_incoming_webhook.content.identifier }}</strong> received flags
+                        {% for flag in last_incoming_webhook.content.flags %}
+                            <hr>
+                            <ul>
+                                <li><strong>Flag name: </strong>{{ flag.name }}</li>
+                                <li><strong>Enabled: </strong>{{ flag.enabled }}</li>
+                                {% if flag.value %}
+                                    <li><strong>Value: </strong>{{ flag.value }}</li>{% endif %}
+                            </ul>
+                        {% endfor %}
+                        <hr>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

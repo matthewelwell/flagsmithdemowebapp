@@ -1,0 +1,8 @@
+{% extends 'demo_bank/demo_bank_base.html' %}
+{% block bank-content %}
+    <form action="{% url 'demo-bank-transfer' %}" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" class="btn btn-warning" value="transfer">
+    </form>
+{% endblock %}

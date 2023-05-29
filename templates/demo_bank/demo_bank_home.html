@@ -1,0 +1,17 @@
+{% extends 'demo_bank/demo_bank_base.html' %}
+{% block extra-style %}
+.options {
+    display: flex;
+}
+{% endblock %}
+{% block bank-content %}
+    {% load humanize %}
+    <div class="balance" style="font-size: xx-large">
+        Your balance is: £{{ account.balance | intcomma }}
+    </div>
+    <div class="options">
+        {% if enable_money_transfer %}
+        <a class="btn btn-warning ml-2" href="{% url 'demo-bank-transfer' %}">Transfer Money</a>
+        {% endif %}
+    </div>
+{% endblock %}

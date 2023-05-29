@@ -1,0 +1,20 @@
+<html lang="en">
+
+<head>
+    <title>{% block title %}Demo Webapp{% endblock %}</title>
+
+    {% include "includes/head.html" %}
+
+</head>
+
+<body>
+<div class="container">
+    <h1>{% block pagetitle %}Demo Webapp{% endblock %}</h1>
+
+    {% include "includes/nav.html" %}
+
+    {% block content %}{% endblock %}
+</div>
+</body>
+
+</html>
